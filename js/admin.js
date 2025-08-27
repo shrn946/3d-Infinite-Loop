@@ -39,7 +39,8 @@ jQuery(document).ready(function($){
     $('#sgl-gallery-list').sortable();
 
     // Save gallery
-    $('#sgl-save-gallery').click(function(){
+    $('#sgl-save-gallery').click(function(e){
+        e.preventDefault();
         var image_ids = [];
         $('#sgl-gallery-list .sgl-item-admin').each(function(){
             image_ids.push(parseInt($(this).data('id')));
@@ -50,7 +51,7 @@ jQuery(document).ready(function($){
             nonce: sgl_ajax_obj.nonce,
             image_ids: image_ids
         }, function(res){
-            if(res.success) alert('Gallery saved!');
+            if(res.success) alert(res.data);
             else alert(res.data || 'Error saving gallery.');
         });
     });
