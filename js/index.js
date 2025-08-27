@@ -15,37 +15,36 @@ imagesLoaded(document.querySelectorAll('.grid__item'), { background: true }, () 
     repeatItems(document.querySelector('.grid'), 3);
 
     const allItems = document.querySelectorAll('.grid__item');
-    const columnsPerRow = 3; // Number of items in the first row
 
-    // Apply effect starting after first row
     allItems.forEach((el, index) => {
-        if (index < columnsPerRow) return; // Skip first row
+        // Set perspective on parent
+        gsap.set(el.parentNode, { perspective: 1200 });
+        gsap.set(el, { transformOrigin: '50% 50%' });
 
-        gsap.set(el.parentNode, { perspective: 1000 });
-        gsap.set(el, { transformOrigin: '50% 50%' }); // Center for rotation
-
-        // Timeline for 3D rotation + scale
+        // Timeline for smoother 3D effect
         gsap.timeline({
             scrollTrigger: {
                 trigger: el,
-                start: 'top 80%',
-                end: 'bottom 20%',
-                scrub: true
+                start: 'top 85%',   // Slightly higher to start earlier
+                end: 'top 15%',     // Complete animation before leaving viewport
+                scrub: true,
             }
         })
         .fromTo(el,
             {
-                scale: 0,
-                rotationY: index % 2 === 0 ? -70 : 70, // alternate rotations
-                rotationX: 10,
-                filter: 'brightness(3)'
+                scale: 0.8,
+                rotationY: index % 2 === 0 ? -25 : 25, // subtle Y rotation
+                rotationX: 5,                           // small X rotation
+                rotationZ: index % 2 === 0 ? -5 : 5,   // small Z rotation for 3D feel
+                filter: 'brightness(2)'
             },
             {
                 scale: 1,
                 rotationY: 0,
                 rotationX: 0,
+                rotationZ: 0,
                 filter: 'brightness(1)',
-                ease: 'none'
+                ease: 'power2.out'
             }
         );
     });
