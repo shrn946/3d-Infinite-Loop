@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Infinite Loop Scrolling Gallery Wordpresss
- * Description: Advanced gallery manager using WordPress Media Library. Supports multiple images, preview, remove, reorder.
+ * Plugin Name: 3d Infinite Loop Scrolling Gallery Wordpresss
+ * Description: Advanced gallery manager using WordPress Media Library. Shortcode: [simple_gallery_scroller]. Supports multiple images, preview, remove, reorder.
  * Version: 3.1
  * Author: WP DESIGN LAB
  */
